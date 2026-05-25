@@ -64,14 +64,13 @@ This power works in Kiro in both **Vibe** and **Spec** modes.
 
 When activated, this power:
 
-1. **Clones** the `v2` branch of `awslabs/aidlc-workflows` from GitHub
+1. **Downloads** the `v2` branch of `awslabs/aidlc-workflows` from GitHub
 2. **Builds** the Kiro distribution using `make build-kiro`
 3. **Copies** the built artifacts (agents, skills, hooks, common files) into your workspace's `.kiro/` directory
 4. **Installs a hook** that offers the AI-DLC workflow on every prompt
 
 ## Prerequisites
 
-- Git (for cloning the repository)
 - Node.js (for the build script and process checker)
 - Internet access
 

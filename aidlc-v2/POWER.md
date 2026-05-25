@@ -16,7 +16,7 @@ Once installed, at the beginning of each new conversation the power asks once wh
 
 ## What Gets Installed
 
-The power clones the AIDLC v2 branch, builds the distribution, and copies it into your workspace's `.kiro/` directory:
+The power downloads the AIDLC v2 branch archive, builds the distribution, and copies it into your workspace's `.kiro/` directory:
 
 ```
 <project-root>/
@@ -68,9 +68,8 @@ Load the setup workflow to install AIDLC v2:
 
 ## Prerequisites
 
-- **Git** must be installed and available on PATH
 - **Node.js** must be installed (used by the build script and deterministic process checker)
-- Internet access to clone from GitHub
+- Internet access to download from GitHub
 
 ## When to Use This Power
 

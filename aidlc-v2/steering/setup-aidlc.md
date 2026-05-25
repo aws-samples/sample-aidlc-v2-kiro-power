@@ -4,7 +4,7 @@ This steering file guides the automatic installation of AI-DLC Workflows v2 into
 
 ## Overview
 
-AI-DLC v2 installs as a `.kiro/` directory at your project root. The installation process detects the operating system, clones the repository directly into the workspace, builds the distribution, copies the output into your workspace's `.kiro/` directory, and then removes the cloned repository.
+AI-DLC v2 installs as a `.kiro/` directory at your project root. The installation process detects the operating system, downloads the repository archive directly into the workspace, builds the distribution, copies the output into your workspace's `.kiro/` directory, and then removes the downloaded files.
 
 ## Installation Steps
 
@@ -35,34 +35,40 @@ Use the detected OS to select the correct commands in subsequent steps.
 **macOS / Linux:**
 
 ```bash
-git --version
+curl --version
+unzip -v
 node --version
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-git --version
 node --version
 ```
 
-Both `git` and `node` must be installed and on PATH. If either is missing, inform the user and stop.
+`curl` and `unzip` must be available on macOS/Linux (they are pre-installed on most systems). `node` must be installed and on PATH on all platforms. If any are missing, inform the user and stop.
 
-### Step 3: Clone the Repository into Workspace
+### Step 3: Download the Repository into Workspace
+
+Download the v2 branch as a zip archive and extract it:
 
 **macOS / Linux:**
 
 ```bash
-git clone --branch v2 --single-branch --depth 1 https://github.com/awslabs/aidlc-workflows.git aidlc-workflows-v2
+curl -L -o aidlc-workflows-v2.zip https://github.com/awslabs/aidlc-workflows/archive/refs/heads/v2.zip
+unzip aidlc-workflows-v2.zip -d .
+mv aidlc-workflows-v2 aidlc-workflows-v2 2>/dev/null || mv aidlc-workflows-2 aidlc-workflows-v2 2>/dev/null || mv aidlc-workflows-* aidlc-workflows-v2
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-git clone --branch v2 --single-branch --depth 1 https://github.com/awslabs/aidlc-workflows.git aidlc-workflows-v2
+Invoke-WebRequest -Uri "https://github.com/awslabs/aidlc-workflows/archive/refs/heads/v2.zip" -OutFile aidlc-workflows-v2.zip
+Expand-Archive -Path aidlc-workflows-v2.zip -DestinationPath .
+Rename-Item -Path aidlc-workflows-* -NewName aidlc-workflows-v2
 ```
 
-This creates an `aidlc-workflows-v2/` folder in the workspace root.
+This creates an `aidlc-workflows-v2/` folder in the workspace root without requiring Git.
 
 ### Step 4: Build the Kiro Distribution
 
@@ -183,18 +189,20 @@ Get-ChildItem aidlc-workflows-v2\dist\kiro\.kiro\hooks\*.json -ErrorAction Silen
 }
 ```
 
-### Step 7: Clean Up — Remove the Cloned Repository
+### Step 7: Clean Up — Remove the Downloaded Files
 
 **macOS / Linux:**
 
 ```bash
 rm -rf aidlc-workflows-v2
+rm -f aidlc-workflows-v2.zip
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
 Remove-Item -Recurse -Force aidlc-workflows-v2
+Remove-Item -Force aidlc-workflows-v2.zip
 ```
 
 This ensures the workspace stays clean with only the `.kiro/` installation remaining.
@@ -244,7 +252,7 @@ Tell the user:
 
 | Problem | Solution |
 |---------|----------|
-| `git clone` fails | Ensure git is installed and you have internet access. Check if `aidlc-workflows-v2/` already exists in the workspace and remove it first. |
+| Download fails | Ensure you have internet access. On macOS/Linux, verify `curl` is installed. On Windows, PowerShell 5+ includes `Invoke-WebRequest` by default. Check if `aidlc-workflows-v2/` already exists in the workspace and remove it first. |
 | `make build-kiro` fails (macOS/Linux) | Ensure Node.js is installed and on PATH. Run `cd aidlc-workflows-v2 && make clean && make build-kiro`. |
 | `make` not found (Windows) | Use Git Bash to run `bash targets/kiro/build.sh`, or install make via `choco install make`. |
 | Skills not loading in Kiro | Confirm `.kiro/` exists at project root with agents/, aidlc-common/, hooks/, skills/ subfolders. Restart Kiro session. |
