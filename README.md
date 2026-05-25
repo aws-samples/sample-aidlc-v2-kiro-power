@@ -20,41 +20,23 @@ aidlc-v2/
 2. Navigate to the **Powers** tab
 3. Click **Add Custom Power**
 4. Select **Import from GitHub**
-5. Paste the repository URL: `https://github.com/awslabs/sample-aidlc-v2-kiro-power`
+5. Paste the repository URL:
+   ```
+   https://github.com/awslabs/sample-aidlc-v2-kiro-power
+   ```
 
-### Option 2: Add as Local Power in Kiro (All Platforms)
+### Option 2: Download from GitHub and Add via Powers Tab
 
-1. Open Kiro IDE
-2. Open Command Palette → "Powers: Configure"
-3. Add this directory as a local power source pointing to the `aidlc-v2/` folder
-
-### Option 3: Copy to Powers Directory (from local clone)
-
-#### macOS
-
-```bash
-cp -R aidlc-v2/ ~/.kiro/powers/installed/aidlc-v2/
-```
-
-#### Linux
-
-```bash
-cp -R aidlc-v2/ ~/.kiro/powers/installed/aidlc-v2/
-```
-
-#### Windows (Command Prompt)
-
-```cmd
-xcopy /E /I aidlc-v2 %USERPROFILE%\.kiro\powers\installed\aidlc-v2
-```
-
-#### Windows (PowerShell)
-
-```powershell
-Copy-Item -Recurse -Path aidlc-v2 -Destination "$env:USERPROFILE\.kiro\powers\installed\aidlc-v2"
-```
-
-Then restart Kiro.
+1. Download the repository as a ZIP from:
+   ```
+   https://github.com/awslabs/sample-aidlc-v2-kiro-power/archive/refs/heads/main.zip
+   ```
+2. Unzip the downloaded file
+3. Open Kiro IDE
+4. Navigate to the **Powers** tab
+5. Click **Add Custom Power**
+6. Select **Import from Local Folder**
+7. Browse to the extracted folder and select the `aidlc-v2/` directory
 
 ## Compatibility
 
