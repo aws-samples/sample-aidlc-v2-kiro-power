@@ -27,10 +27,7 @@ aidlc-v2/
 
 ### Option 2: Download from GitHub and Add via Powers Tab
 
-1. Download the repository as a ZIP from:
-   ```
-   https://github.com/awslabs/sample-aidlc-v2-kiro-power/archive/refs/heads/main.zip
-   ```
+1. Download the repository as a ZIP from GitHub
 2. Unzip the downloaded file
 3. Open Kiro IDE
 4. Navigate to the **Powers** tab
