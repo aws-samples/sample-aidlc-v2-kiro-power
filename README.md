@@ -2,6 +2,8 @@
 
 A Kiro Power that automatically sets up [AI-DLC Workflows v2](https://github.com/awslabs/aidlc-workflows/tree/v2) in your workspace.
 
+This Kiro Power **enables AIDLC V2 to be used in both Vibe and Spec Mode.**
+
 ## Power Structure
 
 ```
@@ -34,10 +36,6 @@ aidlc-v2/
 5. Click **Add Custom Power**
 6. Select **Import from Local Folder**
 7. Browse to the extracted folder and select the `aidlc-v2/` directory
-
-## Compatibility
-
-This power works in Kiro in both **Vibe** and **Spec** modes.
 
 ## What It Does
 
