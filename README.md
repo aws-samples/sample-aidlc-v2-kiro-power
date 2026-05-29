@@ -24,7 +24,7 @@ aidlc-v2/
 4. Select **Import from GitHub**
 5. Paste the repository URL:
    ```
-   https://github.com/awslabs/sample-aidlc-v2-kiro-power
+   https://github.com/aws-samples/sample-aidlc-v2-kiro-power
    ```
 
 ### Option 2: Download from GitHub and Add via Powers Tab
